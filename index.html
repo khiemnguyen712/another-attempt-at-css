@@ -1,17 +1,52 @@
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="stylesheet/custom.css">
     <title>Hello world!</title>
 </head>
 
 <body>
-    <main class="container">
-        <h1>Hello world!</h1>
-    </main>
+    <!---------------------------------------Header---------------------------------------------->
+    <nav>
+        <ul>
+            <li><strong>Acme Corp</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Products</a></li>
+        </ul>
+    </nav>
+    <!---------------------------------------Start----------------------------------------------->
+    <section style="position: relative;">
+        <div class="super-center">Hi! I'm Khiem.</div>
+    </section>
+    <!---------------------------------------Tool's banner--------------------------------------->
+    <div style="position: relative; width: 100%;">
+        <img src="assets/band.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
+        <img src="assets/floaties.svg"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: 2;">
+        <div
+            style="position: absolute; color:white; top: 50%; left: 50%; z-index: 3; transform: translate(-50%, 50%); padding-bottom: -2rem;">
+            I'm working as a Teacher and an Engineer
+        </div>
+    </div>
+    <!---------------------------------------Number's banner------------------------------------->
+    <section style="position: relative; padding-bottom: 8rem;">
+        <div class="super-center">Some numbers that reflect my 19 years of life.</div>
+    </section>
+
+    <div style="position: relative; width: 100%;">
+        <img src="assets/band-2.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
+    </div>
+    <!---------------------------------------Decent works---------------------------------------->
+    <section style="position: relative; padding-bottom: 8rem;">
+        <div class="super-center">Below are some of my works!</div>
+    </section>
 </body>
 
 </html>
