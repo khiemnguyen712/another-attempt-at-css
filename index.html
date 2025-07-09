@@ -11,19 +11,22 @@
 
 <body>
     <!---------------------------------------Header---------------------------------------------->
-    <nav>
-        <ul>
-            <li><strong>Acme Corp</strong></li>
-        </ul>
-        <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Products</a></li>
-        </ul>
-    </nav>
-    <!---------------------------------------Start----------------------------------------------->
-    <section style="position: relative;">
-        <div class="super-center">Hi! I'm Khiem.</div>
+    <main class="container-fluid" style="position: sticky; top: 0; padding: 0.3rem 1rem; font-size: 0.9rem;">
+        <nav style="display: flex; justify-content: space-between; align-items: center;">
+            <ul style="display: flex; gap: 1rem; margin: 0; padding: 0; list-style: none;">
+                <li><strong>Acme Corp</strong></li>
+            </ul>
+            <ul style="display: flex; gap: 1rem; margin: 0; padding: 0; list-style: none;">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Products</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!---------------------------------------Body----------------------------------------------->
+    <section style="position: relative; ">
+        <div class="super-center"">Hi! I'm Khiem.</div>
     </section>
     <!---------------------------------------Tool's banner--------------------------------------->
     <div style="position: relative; width: 100%;">
@@ -31,7 +34,7 @@
         <img src="assets/floaties.svg"
             style="position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: 2;">
         <div
-            style="position: absolute; color:white; top: 50%; left: 50%; z-index: 3; transform: translate(-50%, 50%); padding-bottom: -2rem;">
+            style="position: absolute; color:white; top: 50%; left: 50%; z-index: 3; transform: translate(-50%, 50%);">
             I'm working as a Teacher and an Engineer
         </div>
     </div>
@@ -44,9 +47,17 @@
         <img src="assets/band-2.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
     </div>
     <!---------------------------------------Decent works---------------------------------------->
-    <section style="position: relative; padding-bottom: 8rem;">
+    <main class="container" style="position: relative; padding-top: 7rem;">
         <div class="super-center">Below are some of my works!</div>
-    </section>
+    </main>
+    <!---------------------------------------Voodo List------------------------------------------>
+    <main class="container-fluid">
+        <img src="./assets/vodoo.svg">
+    </main>
+    <!---------------------------------------Bubbly Chat----------------------------------------->
+    <main class="container-fluid">
+        <img src="./assets/bub.svg">
+    </main>
 </body>
 
 </html>
