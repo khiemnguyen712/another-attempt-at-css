@@ -29,43 +29,78 @@
         <div class="super-center"">Hi! I'm Khiem.</div>
     </section>
     <!---------------------------------------Tool's banner--------------------------------------->
-    <div style="position: relative; width: 100%;">
-        <img src="assets/band.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
-        <img src="assets/floaties.svg"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: 2;">
-        <div
-            style="position: absolute; color:white; top: 50%; left: 50%; z-index: 3; transform: translate(-50%, 50%);">
-            I'm working as a Teacher and an Engineer
+    <div style=" position: relative; width: 100%;">
+            <img src="assets/band.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
+            <img src="assets/floaties.svg"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: 2;"
+                class="parallax-layer" data-speed="1.4">
+            <div
+                style="position: absolute; color:white; top: 50%; left: 50%; z-index: 3; transform: translate(-50%, 50%);">
+                I'm working as a Teacher and an Engineer
+            </div>
         </div>
-    </div>
-    <!---------------------------------------Number's banner------------------------------------->
-    <section style="position: relative; padding-bottom: 8rem;">
-        <div class="super-center">Some numbers that reflect my 19 years of life.</div>
-    </section>
+        <!---------------------------------------Number's banner------------------------------------->
+        <section style="position: relative; padding-bottom: 8rem;">
+            <div class="super-center">Some numbers that reflect my 19 years of life.</div>
+        </section>
 
-    <div style="position: relative; width: 100%;">
-        <img src="assets/band-2.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
-    </div>
-    <!---------------------------------------Decent works---------------------------------------->
-    <main class="container" style="position: relative; padding-top: 7rem;">
-        <div class="super-center">Below are some of my works!</div>
-    </main>
-    <!---------------------------------------Voodo List------------------------------------------>
-    <main class="container-fluid">
-        <img src="./assets/vodoo.svg">
-    </main>
-    <!---------------------------------------Bubbly Chat----------------------------------------->
-    <main class="container-fluid">
-        <img src="./assets/bub.svg">
-    </main>
-    <!---------------------------------------Little stuff---------------------------------------->
-    <main class="container-fluid">
-        <img src="./assets/bub.svg">
-    </main>
-    <!---------------------------------------Little stuff---------------------------------------->
-    <main>
-        
-    </main>
+        <div style="position: relative; width: 100%;">
+            <img src="assets/band-2.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
+        </div>
+        <!---------------------------------------Decent works---------------------------------------->
+        <main class="container" style="position: relative; padding-top: 7rem;">
+            <div class="super-center">Below are some of my works!</div>
+        </main>
+        <!---------------------------------------Voodo List------------------------------------------>
+        <main class="container-fluid">
+            <img src="./assets/vodoo.svg">
+        </main>
+        <!---------------------------------------Bubbly Chat----------------------------------------->
+        <main class="container-fluid">
+            <img src="./assets/bub.svg">
+        </main>
+        <!---------------------------------------Little stuff---------------------------------------->
+        <main class="container-fluid">
+            <img src="./assets/bub.svg">
+        </main>
+        <!---------------------------------------Little stuff---------------------------------------->
+        <main>
+
+        </main>
+        <!---------------------------------------Custom Script--------------------------------------->
+        <script>
+            // 🔔 Parallax
+            const layers = document.querySelectorAll(".parallax-layer");
+
+            function updateParallax() {
+                const viewportHeight = window.innerHeight;
+
+                layers.forEach(layer => {
+                    const rect = layer.getBoundingClientRect();
+
+                    if (rect.top < viewportHeight && rect.bottom > 0) {
+                        const speed = parseFloat(layer.dataset.speed);
+
+                        const visiblePart = Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top);
+
+                        const scrollProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+
+                        const clamped = Math.max(0, Math.min(1, scrollProgress));
+                        const maxScroll = 120; // adjust this to control the range
+                        const offset = clamped * maxScroll * speed;
+
+                        layer.style.transform = `translateY(${offset}px)`;
+                    } else {
+                        // Reset transform when out of view (optional)
+                        layer.style.transform = `translateY(0px)`;
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", updateParallax);
+            window.addEventListener("resize", updateParallax); // handle resize as well
+            window.addEventListener("load", updateParallax);   // initial load
+        </script>
 </body>
 
 </html>
