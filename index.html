@@ -33,7 +33,7 @@
             <img src="assets/band.svg" style="position: relative; width: 100%; height: auto; z-index: 1;">
             <img src="assets/floaties.svg"
                 style="position: absolute; top: 0; left: 0; width: 100%; height: auto; z-index: 2;"
-                class="parallax-layer" data-speed="1.4">
+                class="parallax-layer" data-speed="0.2">
             <div
                 style="position: absolute; color:white; top: 50%; left: 50%; z-index: 3; transform: translate(-50%, 50%);">
                 I'm working as a Teacher and an Engineer
@@ -64,43 +64,61 @@
             <img src="./assets/bub.svg">
         </main>
         <!---------------------------------------Little stuff---------------------------------------->
-        <main>
-
+        <main class="container">
+            <p>Contact me thru khiemnguyen.hye@gmail.com</p>
         </main>
         <!---------------------------------------Custom Script--------------------------------------->
         <script>
-            // 🔔 Parallax
-            const layers = document.querySelectorAll(".parallax-layer");
+            const MAX_SCROLL = 120;
+            const layers = document.querySelectorAll('.parallax-layer');
 
-            function updateParallax() {
-                const viewportHeight = window.innerHeight;
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const el = entry.target;
 
-                layers.forEach(layer => {
-                    const rect = layer.getBoundingClientRect();
-
-                    if (rect.top < viewportHeight && rect.bottom > 0) {
-                        const speed = parseFloat(layer.dataset.speed);
-
-                        const visiblePart = Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top);
-
-                        const scrollProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
-
-                        const clamped = Math.max(0, Math.min(1, scrollProgress));
-                        const maxScroll = 120; // adjust this to control the range
-                        const offset = clamped * maxScroll * speed;
-
-                        layer.style.transform = `translateY(${offset}px)`;
+                    if (entry.isIntersecting) {
+                        el._active = true;
+                        if (!el._baseOffset) {
+                            el._baseOffset = el.offsetTop;
+                        }
                     } else {
-                        // Reset transform when out of view (optional)
-                        layer.style.transform = `translateY(0px)`;
+                        el._active = false;
                     }
                 });
+            }, { rootMargin: '0px', threshold: 0 });
+
+            layers.forEach(el => {
+                el._baseOffset = null;
+                io.observe(el);
+            });
+
+            function updateParallax() {
+                const scrollY = window.scrollY;
+                layers.forEach(layer => {
+                    if (!layer._active || layer._baseOffset === null) return;
+
+                    const speed = parseFloat(layer.dataset.speed) || 0;
+                    const distance = scrollY - layer._baseOffset;
+                    const offset = Math.max(-MAX_SCROLL, Math.min(MAX_SCROLL, distance * speed));
+
+                    layer.style.transform = `translateY(${offset}px)`;
+                });
+                ticking = false;
             }
 
-            window.addEventListener("scroll", updateParallax);
-            window.addEventListener("resize", updateParallax); // handle resize as well
-            window.addEventListener("load", updateParallax);   // initial load
+            let ticking = false;
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll);
+            window.addEventListener('resize', () => { ticking = false; updateParallax(); });
+            window.addEventListener('load', updateParallax);
         </script>
+
 </body>
 
 </html>
